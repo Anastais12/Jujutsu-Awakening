@@ -3,7 +3,6 @@
   "package": "com.anastas1s12.jujutsu_awakening.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "ExampleMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -12,6 +11,5 @@
     "requireAnnotations": true
   },
   "client": [
-    "MouseHandlerMixin"
   ]
 }

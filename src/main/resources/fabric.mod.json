@@ -1,0 +1,33 @@
+{
+	"schemaVersion": 1,
+	"id": "jujutsu_awakening",
+	"version": "${version}",
+	"name": "Jujutsu Awakening",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"anastas1s12"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/jujutsu_awakening/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.anastas1s12.jujutsu_awakening.JujutsuAwakening"
+		],
+		"client": [
+			"com.anastas1s12.jujutsu_awakening.client.JujutsuAwakeningClient"
+		]
+	},
+	"mixins": [
+		"jujutsu_awakening.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.18.4",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

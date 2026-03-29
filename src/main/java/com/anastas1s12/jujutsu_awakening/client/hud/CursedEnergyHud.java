@@ -39,15 +39,35 @@ public class CursedEnergyHud {
         int iconX = width / 2 + 91 + 8;
         int iconY = height - 20;
 
-        // TEXTURE SWITCH
-        Identifier icon = inCm ? COMBAT_ICON : INACTIVE_ICON;
-        context.blit(
-                RenderPipelines.GUI_TEXTURED,
-                icon,
-                iconX,
-                iconY,
-                0, 0, 16, 16, 16, 16
-        );
+        int ticks = client.level != null ? (int) client.level.getGameTime() : 0;
+
+        if (inCm) {
+            int frame = (ticks / 2) % 8;
+            int vOffset = frame * 16;
+
+            context.blit(
+                    RenderPipelines.GUI_TEXTURED,
+                    COMBAT_ICON,
+                    iconX,
+                    iconY,
+                    0, vOffset,
+                    16, 16,
+                    16, 128
+            );
+        } else {
+            int frame = (ticks / 2) % 8;
+            int vOffset = frame * 16;
+
+            context.blit(
+                    RenderPipelines.GUI_TEXTURED,
+                    INACTIVE_ICON,
+                    iconX,
+                    iconY,
+                    0, vOffset,
+                    16, 16,
+                    16, 128
+            );
+        }
 
         // TEXT
         String text = ce.getEnergy() + " / " + ce.getMaxEnergy();

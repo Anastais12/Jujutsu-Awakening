@@ -1,9 +1,11 @@
 package com.anastas1s12.jujutsu_awakening.commands;
 
+import com.anastas1s12.jujutsu_awakening.client.hud.KeyframesEditorScreen;
 import com.anastas1s12.jujutsu_awakening.cursed_energy.CursedEnergyManager;
 import com.anastas1s12.jujutsu_awakening.cursed_energy.PlayerCursedEnergy;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.minecraft.client.Minecraft;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
@@ -25,6 +27,13 @@ public class ModCommands {
                                     .then(Commands.argument("max", IntegerArgumentType.integer(1000, 100000))
                                             .executes(ctx -> executeCe(ctx.getSource(), IntegerArgumentType.getInteger(ctx, "max"), false, true))))
                     )
+                    .then(Commands.literal("animator")
+                            .executes(context -> {
+                                Minecraft.getInstance().execute(() -> {
+                                    Minecraft.getInstance().setScreen(new KeyframesEditorScreen());
+                                });
+                                return 1;
+                            }))
             );
         });
     }
